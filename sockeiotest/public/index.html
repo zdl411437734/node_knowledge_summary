@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoket IO Demo</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script>
+        var socket = io('http://127.0.0.1');
+        socket.on('news',function (data) {
+            console.log(data);
+            socket.emit('my other data',{my: 'data'});
+            console.log('socket id4=>'+socket.id);
+        });
+        socket.on('online',function (data) {
+            console.log('online==>'+JSON.stringify(data));
+            console.log('socket id3=>'+socket.id);
+        });
+        socket.on('onlineaaaa',function (data) {
+            console.log('online==>'+JSON.stringify(data));
+            console.log('socket id2=>'+socket.id);
+        });
+        socket.on('connect',()=>{
+            console.log('socket connect is run');
+            console.log('socket id1=>'+socket.id);
+        });
+    </script>
+</body>
+</html>
